@@ -13,6 +13,8 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 import javax.sound.sampled.AudioFormat;
 import javax.sound.sampled.AudioInputStream;
@@ -28,6 +30,8 @@ public class main extends javax.swing.JFrame {
     public String fileMain = "";
     public String preMain = "openChime.wav";
     public String afterMain = "closingChime.wav";
+    public Path currentRelativePath = Paths.get("");
+    public String path = currentRelativePath.toAbsolutePath().toString();
     
     private final int BUFFER_SIZE = 128000;
     private File soundFile;
@@ -51,7 +55,7 @@ public class main extends javax.swing.JFrame {
      */
     public void playSound(String filename){
 
-        String strFilename = "C:/limuny/" + filename;
+        String strFilename = path + "/sounds/" + filename;
 
         try {
             soundFile = new File(strFilename);
@@ -258,7 +262,7 @@ public class main extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(sesiText)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 70, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 86, Short.MAX_VALUE)
                 .addComponent(jLabel13)
                 .addContainerGap())
         );
